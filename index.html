@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metalúrgica União - CNPJ 42.080.790/0001-02</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-blue-900 text-white p-4 flex justify-between">
+    <h1 class="text-lg font-bold">Metalúrgica União</h1>
+    <div class="space-x-4">
+      <a href="#sobre" class="hover:underline">Sobre</a>
+      <a href="#dados" class="hover:underline">Dados</a>
+      <a href="#contato" class="hover:underline">Contato</a>
+      <a href="#localizacao" class="hover:underline">Localização</a>
+      <a href="#json" class="hover:underline">Exportar JSON</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="bg-blue-100 p-10 text-center">
+    <h2 class="text-3xl font-bold mb-2">Metalúrgica União</h2>
+    <p class="text-lg">CNPJ: 42.080.790/0001-02</p>
+    <p class="italic">Razão Social: Walati Docio do Nascimento</p>
+  </header>
+
+  <!-- Sobre -->
+  <section id="sobre" class="p-8">
+    <h3 class="text-2xl font-bold mb-4">Sobre</h3>
+    <p>A empresa <strong>Metalúrgica União</strong>, fundada em <strong>25/05/2021</strong>, com razão social <strong>Walati Docio do Nascimento</strong>, está localizada na cidade de <strong>Ituberá - Bahia</strong>. Sua atividade principal é <strong>25.12-8-00 - Fabricação de esquadrias de metal</strong>. A situação cadastral atual é: <strong>Baixada</strong>, desde 29/09/2023 (Motivo: Extinção por Encerramento / Liquidação Voluntária).</p>
+  </section>
+
+  <!-- Dados Cadastrais -->
+  <section id="dados" class="p-8 bg-gray-100">
+    <h3 class="text-2xl font-bold mb-4">Dados Cadastrais</h3>
+    <ul class="list-disc ml-6">
+      <li><strong>CNPJ:</strong> 42.080.790/0001-02</li>
+      <li><strong>Razão Social:</strong> Walati Docio do Nascimento</li>
+      <li><strong>Nome Fantasia:</strong> Metalúrgica União</li>
+      <li><strong>Abertura:</strong> 25/05/2021</li>
+      <li><strong>Porte:</strong> Microempresa</li>
+      <li><strong>Natureza Jurídica:</strong> Empresário (Individual)</li>
+      <li><strong>Opção MEI:</strong> Não</li>
+      <li><strong>Opção Simples:</strong> Não (25/05/2021 - 29/09/2023)</li>
+      <li><strong>Capital Social:</strong> R$ 3.500,00</li>
+      <li><strong>Situação:</strong> Baixada em 29/09/2023</li>
+      <li><strong>Motivo:</strong> Extinção por Encerramento / Liquidação Voluntária</li>
+      <li><strong>Tipo:</strong> Matriz</li>
+    </ul>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" class="p-8">
+    <h3 class="text-2xl font-bold mb-4">Contato</h3>
+    <p><strong>E-mail:</strong> <a href="mailto:walatiitubera@hotmail.com" class="text-blue-700 underline">walatiitubera@hotmail.com</a></p>
+    <p><strong>Telefone/WhatsApp:</strong> <a href="https://wa.me/5573982303850" class="text-blue-700 underline">(73) 98230-3850</a></p>
+  </section>
+
+  <!-- Localização -->
+  <section id="localizacao" class="p-8 bg-gray-100">
+    <h3 class="text-2xl font-bold mb-4">Localização</h3>
+    <p><strong>Cidade:</strong> Ituberá</p>
+    <p><strong>Estado:</strong> Bahia</p>
+    <a href="https://www.google.com/maps/search/Ituber%C3%A1+Bahia" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-700 text-white rounded-lg">Ver no Google Maps</a>
+  </section>
+
+  <!-- Exportar JSON -->
+  <section id="json" class="p-8">
+    <h3 class="text-2xl font-bold mb-4">Exportar Dados em JSON</h3>
+    <pre id="jsonData" class="bg-gray-200 p-4 rounded text-sm overflow-x-auto"></pre>
+    <button onclick="downloadJSON()" class="mt-4 px-4 py-2 bg-blue-700 text-white rounded-lg">Baixar JSON</button>
+  </section>
+
+  <script>
+    const dados = {
+      cnpj: "42.080.790/0001-02",
+      razaoSocial: "Walati Docio do Nascimento",
+      nomeFantasia: "Metalúrgica União",
+      abertura: "25/05/2021",
+      porte: "Microempresa",
+      naturezaJuridica: "Empresário (Individual)",
+      opcaoMEI: "Não",
+      opcaoSimples: "Não (25/05/2021 - 29/09/2023)",
+      capitalSocial: "R$ 3.500,00",
+      situacao: "Baixada",
+      dataSituacao: "29/09/2023",
+      motivoSituacao: "Extinção por Encerramento / Liquidação Voluntária",
+      tipo: "Matriz",
+      email: "walatiitubera@hotmail.com",
+      telefone: "(73) 98230-3850",
+      whatsapp: "https://wa.me/5573982303850",
+      municipio: "Ituberá",
+      estado: "Bahia",
+      cnaePrincipal: "25.12-8-00 - Fabricação de esquadrias de metal"
+    };
+
+    document.getElementById("jsonData").textContent = JSON.stringify(dados, null, 2);
+
+    function downloadJSON() {
+      const blob = new Blob([JSON.stringify(dados, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = "dados_empresa.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
